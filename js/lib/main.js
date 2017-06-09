@@ -8,9 +8,11 @@ require.config({
   paths: {
   	'domReady': scriptsUrl +'js/vendor/domReady/domReady',
 	'bootstrap': scriptsUrl + 'js/vendor/bootstrap/dist/js/bootstrap.min',
+	'tether': scriptsUrl + 'js/vendor/tether/dist/js/tether.min',
 	'app': scriptsUrl + 'js/lib/app',
 	'ga': scriptsUrl + 'js/lib/ga',
     'controller.home': scriptsUrl + 'js/controllers/home',
+    'controller.secondpage': scriptsUrl + 'js/controllers/secondpage',
     'directive.getObject': scriptsUrl + 'js/directives/getObject',
     'directive.dropDown': scriptsUrl + 'js/directives/dropDown',
     'directive.exportToCsv': scriptsUrl + 'js/directives/exportToCsv',
@@ -39,6 +41,10 @@ define([
 				templateUrl: scriptsUrl+"views/home.html",
 				controller: 'controller.home' 
 			} )
+			.when('/secondpage', { 
+				templateUrl: scriptsUrl+"views/secondpage.html",
+				controller: 'controller.secondpage' 
+			} )
 			.otherwise({redirectTo: '/'})
 	})
     require([
@@ -47,6 +53,7 @@ define([
     	'angular',
         'ga',
     	'controller.home',
+    	'controller.secondpage',
     	'service.api',
     	'service.utility',
         'directive.getObject',
@@ -55,6 +62,7 @@ define([
         'directive.visualization',
         'directive.googleAnnotationChart',
     	'bootstrap',
+    	'tether',
     ], function (document, qlik) {
     	app.obj.qlik = qlik;
 		qlik.setOnError( function ( error ) {
