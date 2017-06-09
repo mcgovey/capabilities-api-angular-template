@@ -45,6 +45,12 @@ div.qvobject.one {
 div.qvobject.fifty {
   height: 50px;
 }
+div.qvobject#CurrentSelections {
+  height: 38px;
+}
+nav.navbar {
+  margin-bottom: 10px;
+}
 .noMarginPadding {
   margin: 0 !important;
   padding: 0 !important;

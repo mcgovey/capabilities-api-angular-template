@@ -4,23 +4,30 @@ var scriptsUrl = 'http://localhost:4848/extensions/angularTemplate/';
 * DEPENDANCIES for Sense 3.0 - Angular 1.5.0, Bootstrap 3.3.6, jQuery  2.1.3
 */
 require.config({
-  baseUrl: "http://localhost:4848/resources",
-  paths: {
-  	'domReady': scriptsUrl +'js/vendor/domReady/domReady',
-	'bootstrap': scriptsUrl + 'js/vendor/bootstrap/dist/js/bootstrap.min',
-	'tether': scriptsUrl + 'js/vendor/tether/dist/js/tether.min',
-	'app': scriptsUrl + 'js/lib/app',
-	'ga': scriptsUrl + 'js/lib/ga',
-    'controller.home': scriptsUrl + 'js/controllers/home',
-    'controller.secondpage': scriptsUrl + 'js/controllers/secondpage',
-    'directive.getObject': scriptsUrl + 'js/directives/getObject',
-    'directive.dropDown': scriptsUrl + 'js/directives/dropDown',
-    'directive.exportToCsv': scriptsUrl + 'js/directives/exportToCsv',
-    'directive.visualization': scriptsUrl + 'js/directives/visualization',
-    'directive.googleAnnotationChart': scriptsUrl + 'js/directives/googleAnnotationChart',
-	'service.api': scriptsUrl + 'js/services/api',
-	'service.utility': scriptsUrl + 'js/services/utilities'
-  }
+	baseUrl: "http://localhost:4848/resources",
+	paths: {
+		'domReady': scriptsUrl +'js/vendor/domReady/domReady',
+		'bootstrap': scriptsUrl + 'js/vendor/bootstrap/dist/js/bootstrap.min',
+		// 'tether': scriptsUrl + 'js/vendor/tether/dist/js/tether.min',
+		'app': scriptsUrl + 'js/lib/app',
+		'ga': scriptsUrl + 'js/lib/ga',
+		'controller.home': scriptsUrl + 'js/controllers/home',
+		'controller.secondpage': scriptsUrl + 'js/controllers/secondpage',
+		'directive.getObject': scriptsUrl + 'js/directives/getObject',
+		'directive.dropDown': scriptsUrl + 'js/directives/dropDown',
+		'directive.exportToCsv': scriptsUrl + 'js/directives/exportToCsv',
+		'directive.visualization': scriptsUrl + 'js/directives/visualization',
+		'directive.googleAnnotationChart': scriptsUrl + 'js/directives/googleAnnotationChart',
+		'service.api': scriptsUrl + 'js/services/api',
+		'service.utility': scriptsUrl + 'js/services/utilities'
+	},
+	shim: {
+		'bootstrap': {
+			deps: [
+				scriptsUrl + 'js/vendor/tether/dist/js/tether.min.js'
+			]
+		}
+	}
 });
 
 define([
@@ -62,7 +69,6 @@ define([
         'directive.visualization',
         'directive.googleAnnotationChart',
     	'bootstrap',
-    	'tether',
     ], function (document, qlik) {
     	app.obj.qlik = qlik;
 		qlik.setOnError( function ( error ) {

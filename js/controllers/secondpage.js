@@ -9,7 +9,7 @@
  * Controller of the myApp
  */
 app.obj.angularApp
-	.controller('controller.home', function ($scope, $rootScope, $location, $injector, api, utility) {
+	.controller('controller.secondpage', function ($scope, $rootScope, $location, $injector, api, utility) {
 		var me = {};
 
 		me.init = function () {
@@ -46,6 +46,7 @@ app.obj.angularApp
 					});
 				});
 			}
+			$rootScope.page = 2;
 			$rootScope.clearAll = function () {
 				app.obj.app.clearAll();
 			}

@@ -40,7 +40,7 @@ app.obj.angularApp
 		}
 		if (app.obj.getObjectModel.length >= 1) {
 			angular.forEach(app.obj.getObjectModel, function(value, key) {
-				value.close();
+				// value.close();
 				deferred.resolve();
 				promises.push(deferred.promise);
 			});

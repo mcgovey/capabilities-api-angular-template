@@ -46,6 +46,7 @@ app.obj.angularApp
 					});
 				});
 			}
+			$rootScope.page = 1;
 			$rootScope.clearAll = function () {
 				app.obj.app.clearAll();
 			}

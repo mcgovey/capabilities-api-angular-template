@@ -21,27 +21,20 @@
 </head>
 <body>
 	<!-- For debugging selections uncommment the line below -->
-	<div class="qvobject fifty" data-qvid="CurrentSelections" id="CurrentSelections"></div>
+	<div class="qvobject" data-qvid="CurrentSelections" id="CurrentSelections"></div>
 	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="#">Navbar</a>
+		<a class="navbar-brand" href="#">Angular Template</a>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				<li class="nav-item" ng-class="(page==1) ? 'active' : ''">
+					<a class="nav-link" ng-click="goTo('')">Home</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
-				</li>
-
-				<li ng-class="(page==1) ? 'active' : ''">
-					<a ng-click="goTo('')">Home</a>
-				</li>
-				<li ng-class="(page==2) ? 'active' : ''">
-					<a ng-click="goTo('associations')">Associated Actors</a>
+				<li class="nav-item" ng-class="(page==2) ? 'active' : ''">
+					<a class="nav-link" ng-click="goTo('secondpage')">Second Page</a>
 				</li>
 			</ul>
 		</div>
@@ -53,7 +46,7 @@
 		<div class="footer">
 			<div class="row">
 				<div class="col-md-12 text-right">
-					<a href="http://www.qlik.com/" target="_blank"><img src="img/logo---powered-by-Qlik.png"></a>
+					<a href="https://www.slalom.com/" target="_blank"><img src="img/logo---powered-by-Qlik.png"></a>
 				</div>
 			</div>
 		</div>
