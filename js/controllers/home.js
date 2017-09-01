@@ -16,6 +16,18 @@ app.obj.angularApp
 			me.measures = [
 				["Count( {$<Priority={'High'}, Status -={'Closed'} >} Distinct %CaseId )", false]
 			];
+			me.hypercubes = {
+				"mapHC": {
+					"dimensions": [],
+					"measures": ["SUM({<[Discharge Year]={$(=max([Discharge Year]))}>} [Total Charges])"],
+					"limit": 2000
+				}
+				
+			};
+			me.listObjects = [
+				["YEAR"],
+				["COUNTRY"]
+			];
 			$scope.kapi = [];
 			me.objects = ['ycppXj'];
 		}
@@ -28,6 +40,8 @@ app.obj.angularApp
 			me.createKpis();
 			// me.getObjects();
 
+			// me.createListObjects();
+
 			// For debugging selections uncommment the line below
 			app.obj.app.getObject('CurrentSelections', 'CurrentSelections');
 			utility.log('Page loaded: ', $scope.page);
@@ -39,6 +53,25 @@ app.obj.angularApp
 			// 		api.getObjects(me.objects);
 			// 	})
 			// }
+			// //Alternative method for creating hypercubes
+			// me.createKpis = function() {
+			// 	api.getHyperCube(me.hypercubes.mapHC.dimensions, me.hypercubes.mapHC.measures, function(data){
+			// 		//Function call from here
+			// 	});
+			// }
+			$rootScope.selectInField = function (selectedVal, field) {
+				var val = isNaN(Number(selectedVal)) ? selectedVal : +selectedVal;
+				app.obj.app.field(field).selectValues([val], false, false)
+			}
+
+			me.createListObjects = function() {
+				angular.forEach(me.listObjects, function(value, key) {
+					api.createList([value[0]], function(data){
+						$rootScope.listObj[value] = data;
+					});
+				});	
+			}
+
 			me.createKpis = function() {
 				angular.forEach(me.measures, function(value, key) {
 					api.getHyperCube([], [value[0]], function(data){
